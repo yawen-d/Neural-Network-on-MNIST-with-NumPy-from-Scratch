@@ -18,8 +18,12 @@ In my code, I defined an object  `NN` to represent the model and contain its par
 
 Note that I implemented a learning rate schedule as follows:
 
+![Figure_0](assets/Figure_0.png)
 
 I wrote 8 methods including `__Softmax(z)`, `__activfunc(self,Z,type = 'ReLU')`, `__cross_entropy_error(self,v,y)`, `__forward(self,x,y)`, `__back_propagation(self,x,y,f_result)`, `__optimize(self,b_result, learning_rate)`, `train(self, X_train, Y_train, num_iterations = 1000, learning_rate = 0.5)`, `testing(self,X_test, Y_test)` to handle initialization, model fitting and testing.
 
 ## Test Accuracy 
 
+![Figure_1](assets/Figure_1.png)
+
+![Figure_2](assets/Figure_2.png)
