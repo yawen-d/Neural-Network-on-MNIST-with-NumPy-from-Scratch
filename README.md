@@ -23,6 +23,7 @@ Note that I implemented a learning rate schedule as follows:
 I wrote 8 methods including `__Softmax(z)`, `__activfunc(self,Z,type = 'ReLU')`, `__cross_entropy_error(self,v,y)`, `__forward(self,x,y)`, `__back_propagation(self,x,y,f_result)`, `__optimize(self,b_result, learning_rate)`, `train(self, X_train, Y_train, num_iterations = 1000, learning_rate = 0.5)`, `testing(self,X_test, Y_test)` to handle initialization, model fitting and testing.
 
 ## Test Accuracy 
+The test accuracy and value of loss function with respect to the number of iterations within one time of modeling are shown as follows. Note the test eventually has achieved an accuracy score of around 97%. (**Sample test**: accuracy = 97.2%)
 
 ![Figure_1](assets/Figure_1.png)
 
