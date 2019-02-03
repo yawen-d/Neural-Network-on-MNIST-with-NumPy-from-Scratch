@@ -35,14 +35,23 @@ class NN:
         self.hid_size = hidden
         self.output_size = outputs
 
-    def __activfunc(self,Z,type = 'ReLU'):
+    def __activfunc(self,Z,type = 'ReLU',deri = False):
         # implement the activation function
         if type == 'ReLU':
-            return np.array([i if i>0 else 0 for i in np.squeeze(Z)])
+            if deri == True:
+                return np.array([1 if i>0 else 0 for i in np.squeeze(Z)])
+            else:
+                return np.array([i if i>0 else 0 for i in np.squeeze(Z)])
         elif type == 'Sigmoid':
-            return 1/(1+np.exp(-Z))
+            if deri == True:
+                return 1/(1+np.exp(-Z))*(1-1/(1+np.exp(-Z)))
+            else:
+                return 1/(1+np.exp(-Z))
         elif type == 'tanh':
-            return np.tanh(Z)
+            if deri == True:
+                return 
+            else:
+                return 1-(np.tanh(Z))**2
         else:
             raise TypeError('Invalid type!')
 
@@ -79,7 +88,7 @@ class NN:
         db_2 = copy.copy(dU)
         dC = np.matmul(dU,f_result['H'].transpose())
         delta = np.matmul(self.second_layer['para'].transpose(),dU)
-        db_1 = delta.reshape(self.hid_size,1)*self.__activfunc(f_result['Z']).reshape(self.hid_size,1)
+        db_1 = delta.reshape(self.hid_size,1)*self.__activfunc(f_result['Z'],deri=True).reshape(self.hid_size,1)
         dW = np.matmul(db_1.reshape((self.hid_size,1)),x.reshape((1,784)))
 
         grad = {
