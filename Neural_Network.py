@@ -158,7 +158,7 @@ class NN:
             prediction = np.argmax(self.__forward(x,y)['f_X'])
             if (prediction == y):
                 total_correct += 1
-        print('Accuarcy Test: ',total_correct/len(X_test))
+        print('Accuracy Test: ',total_correct/len(X_test))
         return total_correct/np.float(len(X_test))
 
 ####################################################################################
